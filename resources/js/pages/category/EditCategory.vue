@@ -1,11 +1,11 @@
 <template>
     <div id="create-categories">
       <div id="contact-us">
-        <h1>Create New Category!</h1>
+        <h1>Edit Category!</h1>
         <!-- success message -->
         <div class="success-msg" v-if="success">
           <i class="fa fa-check"></i>
-          Category created successfully
+          Updated successfully
         </div>
         <div class="contact-form">
           <form @submit.prevent="submit">
@@ -17,7 +17,9 @@
           </form>
         </div>
         <div class="create-categories">
-          <router-link :to="{name: 'CategoryList'}"> Category list <span>&#8594;</span></router-link>
+          <router-link :to="{ name: 'CategoryList' }"
+            >Categories List <span>&#8594;</span></router-link
+          >
         </div>
       </div>
     </div>
@@ -25,6 +27,7 @@
   
   <script>
   export default {
+    props: ["id"],
     data() {
       return {
         field: {},
@@ -35,7 +38,7 @@
     methods: {
       submit() {
         axios
-          .post("/api/category/create", this.field)
+          .put("/api/category/" + this.id, this.field)
           .then(() => {
             this.field = {};
             this.errors = {};
@@ -48,6 +51,17 @@
             this.errors = error.response.data.errors;
           });
       },
+    },
+    mounted() {
+      axios
+        .get("/api/category/" + this.id)
+        .then((response) => {
+            this.field = response.data
+            console.log(this.field); 
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   };
   </script>

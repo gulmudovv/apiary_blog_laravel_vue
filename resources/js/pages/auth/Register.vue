@@ -1,28 +1,28 @@
 <template>
     <div id="backend-view">
       <form @submit.prevent="submit">
-      <h3>Sign Up Here</h3>
-      <label for="name">Name</label>
+      <h3>Регистрация</h3>
+      <label for="name">Имя</label>
       <input type="text" id="name" v-model="fields.name" />
       <span v-if="errors.name" class="error">{{ errors.name[0] }}</span>
 
-      <label for="email">Email</label>
+      <label for="email">Почтовый адрес</label>
       <input type="text" id="email" v-model="fields.email" />
       <span v-if="errors.email" class="error">{{ errors.email[0] }}</span>
 
-      <label for="password">Password</label>
+      <label for="password">Пароль</label>
       <input type="password" id="password" v-model="fields.password" />
       <span v-if="errors.password" class="error">{{ errors.password[0] }}</span>
 
-      <label for="password_confirmation">Confirm password</label>
+      <label for="password_confirmation">Повтор пароля</label>
       <input
         type="password"
         id="password_confirmation"
         v-model="fields.password_confirmation"
       />
 
-      <button type="submit">Sign Up</button>
-      <span>Have an account?<a href=""> Log in</a></span>
+      <button type="submit">Регистрация</button>
+      <span>Уже есть аккаунт? <router-link :to="{name: 'Login'}">Войти</router-link></span>
     </form>
     </div>
   </template>

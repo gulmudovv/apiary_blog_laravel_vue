@@ -23,6 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 ////////////////////////CATEGORY/////////////////////
 Route::middleware('auth:sanctum')->post('category/create', [CategoryController::class, 'store']);
+Route::middleware('auth:sanctum')->get('category/{category}', [CategoryController::class, 'show']);
+Route::middleware('auth:sanctum')->put('category/{category}', [CategoryController::class, 'update']);
+Route::middleware('auth:sanctum')->delete('category/{category}', [CategoryController::class, 'destroy']);
+Route::get('categories', [CategoryController::class, 'index']);
 
 
 Route::middleware('auth:sanctum')->post('logout', [AuthenticatedSessionController::class, 'destroy']);

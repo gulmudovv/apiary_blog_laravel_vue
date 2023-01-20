@@ -18,4 +18,30 @@ class CategoryController extends Controller
         return $category->save();
 
     }
+
+    public function index(){         
+        return Category::all();
+
+    }
+
+    public function show(Category $category){        
+        return $category;
+
+    }
+
+    public function update(Request $request, Category $category){
+        
+        $request->validate(['name'=> 'required | unique:categories']);
+        
+        $name = $request->input('name');        
+        $category->name = $name;
+        
+        return $category->save();
+
+    }
+
+    public function destroy(Category $category){        
+        return $category->delete();
+
+    }
 }

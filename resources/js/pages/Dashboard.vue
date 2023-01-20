@@ -5,11 +5,11 @@
       <span>Hi, {{ name }}!</span>
       <div class="links">
         <ul>
-          <li><a href="">Create Post</a></li>
+          <li><a style="text-decoration: none; color: inherit;" href="">Create Post</a></li>
   
-          <li><router-link :to="{name: 'CreateCategory'}">Create Category</router-link></li>
+          <li><router-link style="text-decoration: none; color: inherit;" :to="{name: 'CreateCategory'}">Create Category</router-link></li>
   
-          <li><a href="">Categories List</a></li>
+          <li><router-link style="text-decoration: none; color: inherit;" :to="{name: 'CategoryList'}">Category List</router-link> </li>
         </ul>
       </div>
     </div>
@@ -26,7 +26,13 @@
       axios.get('/api/user')
       .then((response)=>{
         this.name = response.data.name;})        
-      .catch((error)=>console.log(error))
+        .catch((error)=>{
+        if(error.response.status === 401){
+          this.$emit('updateSidebar'); 
+          localStorage.removeItem('authenticated');    
+          this.$router.push({name: 'Login'})
+        }
+      })
     },
     methods:{
       logout(){

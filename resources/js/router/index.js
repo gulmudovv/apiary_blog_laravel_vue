@@ -9,6 +9,8 @@ import Login from "../pages/auth/Login.vue";
 import Register from "../pages/auth/Register.vue";
 import Dashboard from "../pages/Dashboard.vue";
 import CreateCategory from "../pages/category/CreateCategory.vue";
+import CategoryList from "../pages/category/CategoryList.vue";
+import EditCategory from "../pages/category/EditCategory.vue";
 
 const routes = [
     {
@@ -60,6 +62,19 @@ const routes = [
         name: "CreateCategory",
         component: CreateCategory,
         meta:{requiresAuth:true}
+    },
+    {
+        path: "/categories",
+        name: "CategoryList",
+        component: CategoryList,
+        meta:{requiresAuth:true}
+    },
+    {
+        path: "/category/:id/edit",
+        name: "EditCategory",
+        component: EditCategory,
+        meta:{requiresAuth:true},
+        props:true
     },
 
 
