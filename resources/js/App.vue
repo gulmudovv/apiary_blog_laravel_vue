@@ -38,7 +38,7 @@
       </div>
       <!-- main -->
       <main class="container">
-        <router-view @update-sidebar="updateSidebar"></router-view>
+        <router-view @update-sidebar="updateSidebar" :key="$route.path"></router-view>
       </main>
 
       <!-- Main footer -->

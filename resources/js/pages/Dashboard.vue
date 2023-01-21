@@ -5,7 +5,7 @@
       <span>Hi, {{ name }}!</span>
       <div class="links">
         <ul>
-          <li><a style="text-decoration: none; color: inherit;" href="">Create Post</a></li>
+          <li><router-link style="text-decoration: none; color: inherit;" :to="{name: 'CreatePost'}">Create Post</router-link></li>
   
           <li><router-link style="text-decoration: none; color: inherit;" :to="{name: 'CreateCategory'}">Create Category</router-link></li>
   

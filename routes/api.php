@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RelatedPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +30,15 @@ Route::middleware('auth:sanctum')->get('category/{category}', [CategoryControlle
 Route::middleware('auth:sanctum')->put('category/{category}', [CategoryController::class, 'update']);
 Route::middleware('auth:sanctum')->delete('category/{category}', [CategoryController::class, 'destroy']);
 Route::get('categories', [CategoryController::class, 'index']);
+////////////////////////POST//////////////////////////
+Route::middleware('auth:sanctum')->post('posts', [PostController::class, 'store']);
+Route::get('home-posts', [HomeController::class, 'index']);
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
+Route::get('posts', [PostController::class, 'index']);
+Route::get('related-posts/{post:slug}', [RelatedPostController::class, 'index']);
 
-
-Route::middleware('auth:sanctum')->post('logout', [AuthenticatedSessionController::class, 'destroy']);
-//////////////////////////////////PUBLIC ROUTES//////////////////////////////////////
+//////////////////////////////////AUTH//////////////////////////////////////
 Route::post('register', [RegisteredUserController::class, 'store']);
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
+Route::middleware('auth:sanctum')->post('logout', [AuthenticatedSessionController::class, 'destroy']);
+

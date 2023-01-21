@@ -124,9 +124,10 @@ img {
 }
 
 footer {
-  margin-top: 240px;
+  margin-top: 350px;
   text-align: center;
   font-weight: 300;
+ 
 }
 
 footer a {
@@ -289,7 +290,7 @@ footer small {
 .single-blog-post p {
   margin-bottom: 16px;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .single-blog-post .time-and-author {
@@ -304,7 +305,7 @@ footer small {
 }
 
 .single-blog-post .about-text {
-  max-width: 700px;
+  max-width: 900px;
   margin: 17px auto;
   line-height: 1.5;
 }
@@ -509,7 +510,7 @@ textarea {
     margin-bottom: 25px;
   }
 }
-.router-link-active{
+.side-links .router-link-active{
   background-color: rgb(167, 138, 9);
   color: #fff;
   padding: 3px 15px;
