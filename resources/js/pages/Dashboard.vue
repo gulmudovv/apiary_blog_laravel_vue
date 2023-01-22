@@ -6,7 +6,7 @@
       <div class="links">
         <ul>
           <li><router-link style="text-decoration: none; color: inherit;" :to="{name: 'CreatePost'}">Create Post</router-link></li>
-  
+          <li><router-link style="text-decoration: none; color: inherit;" :to="{name: 'DashboardPostList'}">Post List</router-link></li>
           <li><router-link style="text-decoration: none; color: inherit;" :to="{name: 'CreateCategory'}">Create Category</router-link></li>
   
           <li><router-link style="text-decoration: none; color: inherit;" :to="{name: 'CategoryList'}">Category List</router-link> </li>

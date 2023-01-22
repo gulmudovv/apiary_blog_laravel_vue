@@ -15,7 +15,7 @@
            
             <p>
               {{ post.created_at }}
-              <span style="float: right">Written by: {{ post.user }}</span> 
+              <span style="float: right">Written by: <span class="author-name"> {{ post.user}}</span></span> 
               
             </p>
             <h4 style="font-weight: bolder">              
@@ -47,3 +47,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.author-name{
+  color: white;
+  padding-left:5px;
+}
+</style>

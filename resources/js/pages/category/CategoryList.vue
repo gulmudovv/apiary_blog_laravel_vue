@@ -10,10 +10,10 @@
         <span>{{ index+1 }}</span>
         <p>{{category.name}}</p>
         <div>
-          <router-link :to="{name: 'EditCategory', params:{id:category.id}}" >Edit</router-link>
+          <router-link class="edit-link" :to="{name: 'EditCategory', params:{id:category.id}}" >Edit</router-link>
         </div>
   
-        <input type="button" value="Delete" @click="destroyCategory(category.id)"/>
+        <input class="delete-btn" type="button" value="Delete" @click="destroyCategory(category.id)"/>
       </div>
       
       <div class="index-categories">
@@ -63,6 +63,22 @@
   </script>
   
   <style scoped>
+
+  .edit-link{
+    padding: 6px 20px;
+    background-color: #4caf50;
+    color:#fff;
+    font-size: 14px;
+    display: inline-block;
+  }
+  .delete-btn{
+    padding: 6px 13px;
+    background-color:red;
+    border: none;
+    color:#fff;
+    font-size: 14px;
+    cursor: pointer;
+  }
   .categories-list {
     min-height: 100vh;
     background: #fff;

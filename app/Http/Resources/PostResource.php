@@ -22,6 +22,7 @@ class PostResource extends JsonResource
             'body' => $this->body,
             'imagePath' => $this->imagePath,
             'user' => $this->user->name,
+            'category_id' =>$this->category_id,
             'category' => $this->category->name,
             'created_at' => $this->created_at->diffForHumans(),
 

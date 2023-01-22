@@ -12,6 +12,8 @@ import CreateCategory from "../pages/category/CreateCategory.vue";
 import CategoryList from "../pages/category/CategoryList.vue";
 import EditCategory from "../pages/category/EditCategory.vue";
 import CreatePost from "../pages/post/CreatePost.vue";
+import EditPost from "../pages/post/EditPost.vue";
+import DashboardPostList from "../pages/post/DashboardPostList.vue";
 
 
 const routes = [
@@ -85,6 +87,20 @@ const routes = [
         component: CreatePost,
         meta:{requiresAuth:true}
     },
+  {
+    path: "/dashboard-posts",
+    name: "DashboardPostList",
+    component: DashboardPostList,
+    meta:{requiresAuth:true},
+},
+
+{
+    path: "/post/:slug/edit",
+    name: "EditPost",
+    component: EditPost,
+    meta:{requiresAuth:true},
+    props:true
+},
 
 
 ];

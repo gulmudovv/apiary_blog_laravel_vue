@@ -5,7 +5,7 @@
       <!-- sidebar -->
       <div class="sidebar" :class="{showOverlay:overlayVisibility}">
         <span class="closeButton" @click="HideOverlay">&times;</span>
-        <p class="brand-title"><a href="">Блог пчеловода</a></p>
+        <p class="brand-title"><a href="">Блог Пчеловода</a></p>
 
         <div class="side-links">
           <ul @click="HideOverlay">
@@ -27,7 +27,7 @@
             <a href=""><i class="fab fa-twitter"></i></a>
           </div>
 
-          <small>&copy; 2021 Apiary Blog</small>
+          <small>&copy; {{ new Date().getFullYear() }} Apiary Blog</small>
         </footer>
       </div>
       <!-- Menu Button -->
@@ -38,7 +38,12 @@
       </div>
       <!-- main -->
       <main class="container">
-        <router-view @update-sidebar="updateSidebar" :key="$route.path"></router-view>
+        <router-view 
+        @update-sidebar="updateSidebar"
+        @show-edit-success="showEditSuccess" 
+        :editPostSuccess = "editPostSuccess"
+        :key="$route.path">
+      </router-view>
       </main>
 
       <!-- Main footer -->
@@ -48,7 +53,7 @@
           <a href=""><i class="fab fa-instagram"></i></a>
           <a href=""><i class="fab fa-twitter"></i></a>
         </div>
-        <small>&copy;  Apiary Blog</small>
+        <small>&copy; {{ new Date().getFullYear() }} Apiary Blog</small>
       </footer>
     </div>
 </template>
@@ -58,7 +63,8 @@ export default{
   data(){
     return{
       overlayVisibility: false,
-      loggedIn: false
+      loggedIn: false,
+      editPostSuccess:false
     }
   },
   methods:{
@@ -70,6 +76,9 @@ export default{
      },
      updateSidebar(){
        this.loggedIn = !this.loggedIn;
+     },
+     showEditSuccess(){
+       this.editPostSuccess = true;
      }
   },
   mounted(){
