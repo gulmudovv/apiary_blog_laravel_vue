@@ -1,12 +1,14 @@
 <template>
     <section class="single-blog-post">
-        <h1>{{ post.title}}</h1>
+      
+      <h1>{{ post.title}}</h1>
 
         <p class="time-and-author">
           {{ post.created_at }}
           <span>Written By:<span class="author-name"> {{ post.user}}</span></span>
         </p>
-
+       
+     
         <div class="single-blog-post-ContentImage" data-aos="fade-left">
           <img :src="`/${post.imagePath}`" alt="" />
         </div>
@@ -50,8 +52,7 @@ export default {
   emits:['updateSidebar'],
   mounted(){
     axios.get("/api/posts/" + this.slug).then((response)=>{
-         this.post=response.data.data;
-         console.log(response.data.data);
+         this.post=response.data.data;         
     }).catch((err)=>{
       console.log(err);
     });

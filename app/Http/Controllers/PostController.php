@@ -6,14 +6,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use App\Models\Post;
+use App\Models\Category;
 use App\Http\Resources\PostResource;
 
 class PostController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        return PostResource::collection(Post::latest()->get());
+        if($request->category){
+            return PostResource::collection(Category::where('name', $request->category)->firstOrFail()->posts()->latest()->paginate(6)->withQueryString());
+        }
+        else if($request->search){
+            return PostResource::collection(Post::where('title', 'like', '%'. $request->search.'%')->orWhere('body', 'like', '%'. $request->search.'%')->latest()->paginate(6)->withQueryString());
+        }
+        return PostResource::collection(Post::latest()->paginate(6));
     }
 
 
@@ -36,7 +43,7 @@ class PostController extends Controller
         }
 
         $slug = Str::slug($title, '-') . '-' . $postId;
-        $user_id = auth()->user()->id;
+        $user_id = auth()->id();
         $body = $request->input('body');
         $imagePath = 'storage/' . $request->file('file')->store('postsImages', 'public');
 
@@ -52,10 +59,7 @@ class PostController extends Controller
     }
 
     public function show(Post $post){
-        if(auth()->user()->id !== $post->user->id){
-            return abort(403);
-        }
-        
+       
         return new PostResource($post);
 }
 

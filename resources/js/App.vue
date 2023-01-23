@@ -5,7 +5,7 @@
       <!-- sidebar -->
       <div class="sidebar" :class="{showOverlay:overlayVisibility}">
         <span class="closeButton" @click="HideOverlay">&times;</span>
-        <p class="brand-title"><a href="">Блог Пчеловода</a></p>
+        <p class="brand-title"><router-link  :to="{name:'Home'}">Блог Пчеловода.</router-link></p>
 
         <div class="side-links">
           <ul @click="HideOverlay">
