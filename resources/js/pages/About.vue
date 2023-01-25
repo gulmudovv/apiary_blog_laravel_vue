@@ -2,7 +2,7 @@
     <section class="single-blog-post">
         <h1>О Блоге</h1>
         <div class="single-blog-post-ContentImage" data-aos="fade-left">
-          <img src="images/beekeeper.jpg" alt="" />
+          <img src="/images/beekeeper.jpg" alt="" />
         </div>
 
         <div>
